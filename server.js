@@ -10,7 +10,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static('Doctrack2'));
+
 // Conexión a la base de datos usando variables de entorno
 const db = mysql.createConnection({
     host: process.env.DB_HOST,     // Usar la variable de entorno DB_HOST
@@ -965,7 +966,7 @@ app.post("/modificar-tratamiento", (req, res) => {
 
 
 // Iniciar el servidor
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
 });
