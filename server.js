@@ -11,12 +11,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Conexión a la base de datos
+// Conexión a la base de datos usando variables de entorno
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "2323", // Tu contraseña
-    database: "Docktrack",
+    host: process.env.DB_HOST,     // Usar la variable de entorno DB_HOST
+    user: process.env.DB_USER,     // Usar la variable de entorno DB_USER
+    password: process.env.DB_PASSWORD, // Usar la variable de entorno DB_PASSWORD
+    database: process.env.DB_NAME,   // Usar la variable de entorno DB_NAME
+    port: process.env.DB_PORT || 3306, // Asegúrate de que el puerto sea 3306 si no está definido
 });
 
 db.connect((err) => {
@@ -964,7 +965,7 @@ app.post("/modificar-tratamiento", (req, res) => {
 
 
 // Iniciar el servidor
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port}`);
 });
