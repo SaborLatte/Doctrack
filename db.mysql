@@ -1,6 +1,3 @@
-DROP DATABASE IF EXISTS Docktrack;
-CREATE DATABASE IF NOT EXISTS Docktrack;
-USE Docktrack;
 
 -- Tabla Paciente
 CREATE TABLE Paciente (
@@ -112,3 +109,5 @@ FROM Paciente_tratamiento pt
 JOIN Tratamiento t ON pt.id_tratamiento = t.id_tratamiento
 JOIN Doctor_tratamiento dt ON t.id_tratamiento = dt.id_tratamiento
 WHERE pt.id_tratamiento = 1;
+
+
